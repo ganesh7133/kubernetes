@@ -1,0 +1,25 @@
+pipeline:
+    name: git
+    identifier: git
+    projectIdentifier: tuesdayproject
+    orgIdentifier: default
+    tags: {}
+    properties:
+        ci:
+            codebase:
+                connectorRef: devops
+                build: <+input>
+    stages:
+        - stage:
+              name: first
+              identifier: first
+              description: ""
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: devopss
+                          namespace: devops
+              variables: []
